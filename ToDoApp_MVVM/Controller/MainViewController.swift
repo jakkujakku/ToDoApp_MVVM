@@ -14,6 +14,9 @@ class MainViewController: UIViewController {
     private let completionButton = CustomButton()
     private let logoImageView = CustomImageView(frame: .zero)
 
+    private let todoVC = ToDoViewController()
+    private let completedVC = CompletionViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -24,7 +27,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController {
+private extension MainViewController {
     func setupUI() {
         view.backgroundColor = .systemBackground
         setupButtons()
@@ -73,12 +76,14 @@ extension MainViewController {
     }
 }
 
-extension MainViewController {
+private extension MainViewController {
     @objc func tappedToDoButton(_ sender: UIButton) {
+        navigationController?.pushViewController(todoVC, animated: true)
         print("### \(#function)")
     }
 
     @objc func tappedCompletionButton(_ sender: UIButton) {
+        navigationController?.pushViewController(completedVC, animated: true)
         print("### \(#function)")
     }
 }
