@@ -17,6 +17,7 @@
 		4EFDA3922AB2EF4E00AC1B87 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA3912AB2EF4E00AC1B87 /* ToDoViewController.swift */; };
 		4EFDA3942AB2EF5A00AC1B87 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA3932AB2EF5A00AC1B87 /* CompletionViewController.swift */; };
 		4EFDA3962AB2EF7200AC1B87 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA3952AB2EF7200AC1B87 /* CustomButton.swift */; };
+		4EFDA39A2AB3017C00AC1B87 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA3992AB3017C00AC1B87 /* CustomImageView.swift */; };
 		6F49359D1DAE8EAB4E3FD0D4 /* Pods_ToDoApp_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3D361962DF0B7DEC73A0FC /* Pods_ToDoApp_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		4EFDA3912AB2EF4E00AC1B87 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		4EFDA3932AB2EF5A00AC1B87 /* CompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
 		4EFDA3952AB2EF7200AC1B87 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		4EFDA3992AB3017C00AC1B87 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		7F3D361962DF0B7DEC73A0FC /* Pods_ToDoApp_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoApp_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B0BE388A44558D55853EB0 /* Pods-ToDoApp_MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoApp_MVVM.debug.xcconfig"; path = "Target Support Files/Pods-ToDoApp_MVVM/Pods-ToDoApp_MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		D7911AC3E950BA5737ADA9CB /* Pods-ToDoApp_MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoApp_MVVM.release.xcconfig"; path = "Target Support Files/Pods-ToDoApp_MVVM/Pods-ToDoApp_MVVM.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				4EFDA3952AB2EF7200AC1B87 /* CustomButton.swift */,
+				4EFDA3992AB3017C00AC1B87 /* CustomImageView.swift */,
 				4EFDA3982AB2F34100AC1B87 /* Cells */,
 			);
 			path = View;
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EFDA3902AB2EED100AC1B87 /* Completion.swift in Sources */,
+				4EFDA39A2AB3017C00AC1B87 /* CustomImageView.swift in Sources */,
 				4EFDA37A2AB2EDD700AC1B87 /* MainViewController.swift in Sources */,
 				4EFDA3942AB2EF5A00AC1B87 /* CompletionViewController.swift in Sources */,
 				4EFDA3762AB2EDD700AC1B87 /* AppDelegate.swift in Sources */,
