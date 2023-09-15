@@ -17,13 +17,15 @@ class MainViewController: UIViewController {
     private let todoVC = ToDoViewController()
     private let completedVC = CompletionViewController()
 
+    deinit {
+        print("### ")
+    }
+}
+
+extension MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-
-    deinit {
-        print("### ")
     }
 }
 
