@@ -7,8 +7,7 @@ target 'ToDoApp_MVVM' do
 
 pod 'Alamofire'
 pod 'SnapKit'
-pod 'RxSwift'
-pod 'RxCocoa'
+
 
   # Pods for ToDoApp_MVVM
 

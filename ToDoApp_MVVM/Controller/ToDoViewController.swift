@@ -21,12 +21,17 @@ extension ToDoViewController {
         super.viewDidLoad()
         setupUI()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ToDoManager.loadData()
+        tableView.reloadData()
+    }
 }
 
 private extension ToDoViewController {
     func setupUI() {
         view.backgroundColor = .systemBackground
-        DataManager.context
         setupTableView()
         registerCell()
         setupBarButtonItem()
@@ -34,7 +39,8 @@ private extension ToDoViewController {
 
     func setupTableView() {
         tableView.dataSource = self
-        tableView.backgroundColor = .systemPink
+        tableView.delegate = self
+        tableView.backgroundColor = .clear
 
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -55,17 +61,32 @@ private extension ToDoViewController {
 private extension ToDoViewController {
     @objc func tappedAddButton(_ sender: UIBarButtonItem) {
         print("### \(#function)")
+        ToDoManager.saveData(item: "Hello")
+        viewWillAppear(true)
     }
 }
 
 extension ToDoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return ToDoManager.todos.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoCell.identifier, for: indexPath) as? ToDoCell else { return UITableViewCell() }
         cell.backgroundColor = .systemOrange
         return cell
+    }
+}
+
+extension ToDoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ToDoManager.deleteData(at: indexPath)
+            viewWillAppear(true)
+        }
     }
 }
