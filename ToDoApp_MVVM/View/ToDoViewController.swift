@@ -11,8 +11,8 @@ import SnapKit
 import UIKit
 
 class ToDoViewController: UIViewController {
-    // 1. 테이블 뷰 UI 구현 ✅
-    // 2. CoreData 추가
+    var viewModel = ToDoViewModel()
+    
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
 }
 
@@ -76,8 +76,6 @@ extension ToDoViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-
-        }
+        if editingStyle == .delete {}
     }
 }

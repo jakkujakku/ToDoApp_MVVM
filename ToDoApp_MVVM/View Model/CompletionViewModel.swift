@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class CompletionViewModel {
+    func createItem() {}
+
+    func readItem() {}
+
+    func updateItem() {}
+
+    func deleteItem() {}
+}

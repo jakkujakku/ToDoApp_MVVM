@@ -5,19 +5,26 @@
 //  Created by (^ㅗ^)7 iMac on 2023/09/19.
 //
 
+import SnapKit
 import UIKit
 
-class CategoryCell: UITableViewCell {
+final class CategoryCell: UITableViewCell {
+    static var identifier = "CategoryCell"
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var titleLabel = CustomLabel(frame: .zero)
+}
+
+extension CategoryCell {
+    func configure(item: Category) {
+        titleLabel.text = item.title
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    func setupUI() {
+        contentView.addSubview(titleLabel)
 
-        // Configure the view for the selected state
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(20)
+        }
     }
-
 }
