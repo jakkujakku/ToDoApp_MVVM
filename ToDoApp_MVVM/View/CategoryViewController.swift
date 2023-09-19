@@ -14,7 +14,8 @@ class CategoryViewController: UIViewController {
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
     var todoVC = ToDoViewController()
     var viewModel = CategoryViewModel()
-
+    var subscription = Set<AnyCancellable>()
+    
     deinit {
         print("### CategoryViewController deinitalized")
     }
@@ -65,7 +66,7 @@ extension CategoryViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.tableView.reloadData()
-            }
+            }.store(in: &subscription)
     }
 }
 
@@ -114,6 +115,7 @@ extension CategoryViewController: UITableViewDataSource {
 
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        todoVC.viewModel.selectedCategory = viewModel.categories[indexPath.row]
         navigationController?.pushViewController(todoVC, animated: true)
     }
 

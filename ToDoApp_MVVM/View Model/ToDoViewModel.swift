@@ -6,6 +6,7 @@
 //
 
 import Combine
+import CoreData
 import Foundation
 
 class ToDoViewModel {
@@ -20,6 +21,12 @@ class ToDoViewModel {
         }
     }
 
+    var selectedCategory: Category? {
+        didSet {
+            readItem()
+        }
+    }
+
     var totalCount: Int {
         return todos.count
     }
@@ -30,21 +37,29 @@ class ToDoViewModel {
         newTask.title = title
         newTask.date = Date()
         newTask.isCompleted = false
-
+        newTask.parentCategory = selectedCategory
         todos.append(newTask)
 
         do {
             try DataManager.context.save()
-            readItem()
+            todoList.send(todos)
         } catch {
             print("### Insert Error: \(error)")
         }
     }
 
-    func readItem() {
+    func readItem(with request: NSFetchRequest<Task> = Task.fetchRequest(), predicate: NSPredicate? = nil) {
+        let categoryPredicate = NSPredicate(format: "parentCategory.title MATCHES %@", selectedCategory!.title!)
+
+        if let addtionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
+
         do {
-            todos = try DataManager.context.fetch(Task.fetchRequest())
-            todoList.send(todos)
+            todos = try DataManager.context.fetch(request)
+
         } catch {
             // error
             print("패치 에러 : \(error)")
