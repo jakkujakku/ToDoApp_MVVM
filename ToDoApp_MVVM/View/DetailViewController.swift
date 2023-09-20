@@ -10,7 +10,7 @@ import SnapKit
 import UIKit
 
 class DetailViewController: UIViewController {
-    var viewModel = DetailViewModel()
+    var viewModel = ToDoViewModel()
     var subscription = Set<AnyCancellable>()
 
     let superStackView = CustomStackView(frame: .zero)
@@ -37,7 +37,6 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setup()
     }
 
@@ -46,8 +45,9 @@ extension DetailViewController {
     }
 }
 
-extension DetailViewController {
+private extension DetailViewController {
     func setup() {
+        view.backgroundColor = .systemBackground
         setupStackView()
         setupImageView()
         setupTitleStackView()
@@ -58,7 +58,6 @@ extension DetailViewController {
 
     func setupStackView() {
         superStackView.configure(axis: .vertical, alignment: .fill, distribution: .fillProportionally, spacing: 20)
-//        superStackView.backgroundColor = .systemOrange
         view.addSubview(superStackView)
 
         [imageView, titleStackView, dateStackView, modifiedStackView, editButton].forEach { superStackView.addArrangedSubview($0) }
@@ -123,6 +122,7 @@ extension DetailViewController {
 
     func setButton() {
         editButton.configure(title: "Edit Button", color: .systemOrange)
+        editButton.addTarget(self, action: #selector(tappedEditButton(_:)), for: .touchUpInside)
         editButton.applyConerRadius()
         editButton.snp.makeConstraints { make in
             make.height.equalTo(60)
@@ -130,7 +130,7 @@ extension DetailViewController {
     }
 }
 
-extension DetailViewController {
+private extension DetailViewController {
     func bind() {
         viewModel.detailPublisher
             .receive(on: RunLoop.main)
@@ -139,7 +139,32 @@ extension DetailViewController {
                 self?.titleLabel.text = self?.viewModel.title
                 self?.dateLabel.text = self?.viewModel.date
                 self?.modifiedDateLabel.text = self?.viewModel.modified
-                print("### \(self?.viewModel.item)")
             }.store(in: &subscription)
+    }
+}
+
+private extension DetailViewController {
+    @objc func tappedEditButton(_ sender: UIButton) {
+        showAlert()
+        print("### \(#function)")
+    }
+
+    func showAlert() {
+        let alert = UIAlertController(title: "Please enter a category", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+
+        let confirmAlert = UIAlertAction(title: "추가", style: .default, handler: { [weak self] _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
+            }
+            self?.viewModel.updateItem(task: self?.viewModel.item, newTitle: text, modifyDate: self?.viewModel.item?.modifyDate ?? Date())
+            self?.navigationController?.popViewController(animated: true)
+        })
+
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alert.addAction(confirmAlert)
+        alert.addAction(cancelAlert)
+        present(alert, animated: true)
     }
 }

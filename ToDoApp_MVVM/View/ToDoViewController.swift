@@ -29,6 +29,7 @@ extension ToDoViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = viewModel.selectedCategory?.title
+        bind()
     }
 }
 
@@ -41,7 +42,6 @@ private extension ToDoViewController {
         setupTableView()
         registerCell()
         setupBarButtonItem()
-        bind()
     }
 
     func setupTableView() {
@@ -115,6 +115,7 @@ extension ToDoViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ToDoCell.identifier, for: indexPath) as? ToDoCell else { return UITableViewCell() }
         cell.setupUI()
         cell.configure(item: viewModel.todos[indexPath.row])
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
@@ -122,7 +123,7 @@ extension ToDoViewController: UITableViewDataSource {
 extension ToDoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelecteItem(at: indexPath.item)
-        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

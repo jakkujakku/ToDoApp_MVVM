@@ -12,6 +12,7 @@ import Foundation
 class ToDoViewModel {
     private var todoList = CurrentValueSubject<[Task], Never>([])
     private var selectedItem = CurrentValueSubject<Task?, Never>(nil)
+    private var detailItem = CurrentValueSubject<Task?, Never>(nil)
 
     var todoPublisher: AnyPublisher<[Task], Never> {
         return todoList.eraseToAnyPublisher()
@@ -21,8 +22,15 @@ class ToDoViewModel {
         return selectedItem.eraseToAnyPublisher()
     }
 
+    var detailPublisher: AnyPublisher<Task?, Never> {
+        return detailItem.eraseToAnyPublisher()
+    }
+
+    var item: Task?
+
     var todos: [Task] = [] {
         didSet {
+            todos.sort(by: { $0.date! > $1.date! })
             todoList.send(todos)
         }
     }
@@ -35,6 +43,18 @@ class ToDoViewModel {
 
     var totalCount: Int {
         return todos.count
+    }
+
+    var title: String {
+        return item?.title ?? ""
+    }
+
+    var date: String {
+        return DataManager.dateFormatter(date: item?.date ?? Date())
+    }
+
+    var modified: String {
+        return DataManager.dateFormatter(date: item?.modifyDate ?? Date())
     }
 
     func didSelecteItem(at indexPath: Int) {
@@ -54,14 +74,14 @@ class ToDoViewModel {
 
         do {
             try DataManager.context.save()
-            todoList.send(todos)
+            readItem()
         } catch {
             print("### Insert Error: \(error)")
         }
     }
 
     func readItem(with request: NSFetchRequest<Task> = Task.fetchRequest(), predicate: NSPredicate? = nil) {
-        let categoryPredicate = NSPredicate(format: "parentCategory.title MATCHES %@", selectedCategory!.title!)
+        let categoryPredicate = NSPredicate(format: "parentCategory.title MATCHES %@", selectedCategory?.title ?? "")
 
         if let addtionalPredicate = predicate {
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
@@ -71,20 +91,20 @@ class ToDoViewModel {
 
         do {
             todos = try DataManager.context.fetch(request)
-
+            todoList.send(todos)
         } catch {
             // error
             print("패치 에러 : \(error)")
         }
     }
 
-    func updateItem(task: Task, newTitle: String, modifyDate: Date) {
-        task.title = newTitle
-        task.modifyDate = modifyDate
+    func updateItem(task: Task?, newTitle: String, modifyDate: Date) {
+        task?.title = newTitle
+        task?.modifyDate = modifyDate
 
         do {
             try DataManager.context.save()
-            readItem()
+            todoList.send(todos)
         } catch {
             print("### Update Error: \(error)")
         }

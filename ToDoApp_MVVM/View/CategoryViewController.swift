@@ -104,7 +104,7 @@ extension CategoryViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.identifier, for: indexPath) as? CategoryCell else { return UITableViewCell() }
         cell.setupUI()
         cell.configure(item: viewModel.categories[indexPath.row])
-
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 
