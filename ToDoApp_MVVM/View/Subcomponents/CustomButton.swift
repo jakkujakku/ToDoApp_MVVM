@@ -26,6 +26,7 @@ extension CustomButton {
     func configure(title: String, color: UIColor) {
         setTitle(title, for: .normal)
         backgroundColor = color
+        titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
     }
 
     func applyConerRadius() {

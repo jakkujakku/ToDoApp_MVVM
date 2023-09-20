@@ -13,7 +13,8 @@ class DataManager {
 
     static func dateFormatter(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy. M. d a hh:mm:ss"
+        formatter.dateFormat = "yyyy. M. d"
+//        formatter.dateFormat = "yyyy. M. d a hh:mm:ss"
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter.string(from: date)
     }

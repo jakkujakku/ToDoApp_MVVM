@@ -20,5 +20,11 @@ class DetailViewModel {
         return item?.title ?? ""
     }
     
+    var date: String {
+        return DataManager.dateFormatter(date: item?.date ?? Date())
+    }
     
+    var modified: String {
+        return DataManager.dateFormatter(date: item?.modifyDate ?? Date())
+    }
 }
