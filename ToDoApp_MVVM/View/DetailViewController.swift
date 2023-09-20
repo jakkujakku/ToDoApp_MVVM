@@ -6,11 +6,21 @@
 //
 
 import Combine
+import SnapKit
 import UIKit
 
 class DetailViewController: UIViewController {
     var viewModel = DetailViewModel()
     var subscription = Set<AnyCancellable>()
+
+    let imageView = CustomImageView(frame: .zero)
+
+    let titleLabel = CustomLabel(frame: .zero)
+    let dateLabel = CustomLabel(frame: .zero)
+    let modifiedDateLabel = CustomLabel(frame: .zero)
+
+    let editButton = CustomButton(frame: .zero)
+    let backButton = CustomButton(frame: .zero)
 
     deinit {
         print("### DetailViewController deinitialized")
@@ -20,14 +30,40 @@ class DetailViewController: UIViewController {
 extension DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .systemBackground
         setup()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        bind()
     }
 }
 
 extension DetailViewController {
     func setup() {
-        bind()
+        setupImageView()
+        setupLabel()
+    }
+
+    func setupImageView() {
+        imageView.image = UIImage(systemName: "bell")
+        imageView.contentMode = .scaleToFill
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalToSuperview().inset(50)
+            make.height.equalTo(250)
+        }
+    }
+
+    func setupLabel() {
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().inset(50)
+            make.leading.equalToSuperview().inset(50)
+        }
     }
 
     func bind() {
@@ -35,6 +71,7 @@ extension DetailViewController {
             .receive(on: RunLoop.main)
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
+                self?.titleLabel.text = self?.viewModel.title
                 print("### \(self?.viewModel.item)")
             }.store(in: &subscription)
     }

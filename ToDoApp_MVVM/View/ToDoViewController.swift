@@ -122,7 +122,7 @@ extension ToDoViewController: UITableViewDataSource {
 extension ToDoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelecteItem(at: indexPath.item)
-        self.present(vc, animated: true)
+        present(vc, animated: true)
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

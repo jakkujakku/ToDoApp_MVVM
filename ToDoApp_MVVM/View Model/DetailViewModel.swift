@@ -15,4 +15,10 @@ class DetailViewModel {
     }
     
     var item: Task? = nil
+    
+    var title: String {
+        return item?.title ?? ""
+    }
+    
+    
 }
