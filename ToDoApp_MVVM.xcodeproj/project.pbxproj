@@ -12,6 +12,9 @@
 		4E7A8D8E2AB461E00084C966 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A8D8D2AB461E00084C966 /* ToDoCell.swift */; };
 		4E7A8D902AB461EC0084C966 /* CompletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A8D8F2AB461EC0084C966 /* CompletionCell.swift */; };
 		4E7A8D922AB46A2D0084C966 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A8D912AB46A2D0084C966 /* DataManager.swift */; };
+		4EA279FF2ABA7FD1001BAE85 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA279FE2ABA7FD1001BAE85 /* DetailViewController.swift */; };
+		4EA27A032ABA7FF2001BAE85 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA27A022ABA7FF2001BAE85 /* UpdateViewController.swift */; };
+		4EA27A052ABA88B4001BAE85 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA27A042ABA88B4001BAE85 /* DetailViewModel.swift */; };
 		4ED838072AB997120040B457 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED838062AB997120040B457 /* MainViewModel.swift */; };
 		4ED838092AB9971A0040B457 /* ToDoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED838082AB9971A0040B457 /* ToDoViewModel.swift */; };
 		4ED8380B2AB997250040B457 /* CompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8380A2AB997250040B457 /* CompletionViewModel.swift */; };
@@ -40,6 +43,9 @@
 		4E7A8D8D2AB461E00084C966 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		4E7A8D8F2AB461EC0084C966 /* CompletionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionCell.swift; sourceTree = "<group>"; };
 		4E7A8D912AB46A2D0084C966 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		4EA279FE2ABA7FD1001BAE85 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4EA27A022ABA7FF2001BAE85 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		4EA27A042ABA88B4001BAE85 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		4ED838062AB997120040B457 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4ED838082AB9971A0040B457 /* ToDoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewModel.swift; sourceTree = "<group>"; };
 		4ED8380A2AB997250040B457 /* CompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionViewModel.swift; sourceTree = "<group>"; };
@@ -144,6 +150,8 @@
 				4EFDA3792AB2EDD700AC1B87 /* MainViewController.swift */,
 				4ED8380C2AB997970040B457 /* CategoryViewController.swift */,
 				4EFDA3912AB2EF4E00AC1B87 /* ToDoViewController.swift */,
+				4EA279FE2ABA7FD1001BAE85 /* DetailViewController.swift */,
+				4EA27A022ABA7FF2001BAE85 /* UpdateViewController.swift */,
 				4EFDA3932AB2EF5A00AC1B87 /* CompletionViewController.swift */,
 				4ED838052AB996200040B457 /* Subcomponents */,
 				4EFDA3982AB2F34100AC1B87 /* Cells */,
@@ -168,6 +176,7 @@
 				4ED838062AB997120040B457 /* MainViewModel.swift */,
 				4ED8380E2AB9981D0040B457 /* CategoryViewModel.swift */,
 				4ED838082AB9971A0040B457 /* ToDoViewModel.swift */,
+				4EA27A042ABA88B4001BAE85 /* DetailViewModel.swift */,
 				4ED8380A2AB997250040B457 /* CompletionViewModel.swift */,
 			);
 			path = "View Model";
@@ -317,15 +326,18 @@
 			files = (
 				4E7A8D8A2AB44EE80084C966 /* DataManager.xcdatamodeld in Sources */,
 				4ED838112AB998380040B457 /* CategoryCell.swift in Sources */,
+				4EA279FF2ABA7FD1001BAE85 /* DetailViewController.swift in Sources */,
 				4ED838142AB99B050040B457 /* CaCViewModel.swift in Sources */,
 				4ED8380D2AB997970040B457 /* CategoryViewController.swift in Sources */,
 				4ED838162AB99B250040B457 /* TCViewModel.swift in Sources */,
 				4EFDA39A2AB3017C00AC1B87 /* CustomImageView.swift in Sources */,
 				4E7A8D922AB46A2D0084C966 /* DataManager.swift in Sources */,
+				4EA27A032ABA7FF2001BAE85 /* UpdateViewController.swift in Sources */,
 				4EFDA37A2AB2EDD700AC1B87 /* MainViewController.swift in Sources */,
 				4EFDA3942AB2EF5A00AC1B87 /* CompletionViewController.swift in Sources */,
 				4EFDA3762AB2EDD700AC1B87 /* AppDelegate.swift in Sources */,
 				4ED838072AB997120040B457 /* MainViewModel.swift in Sources */,
+				4EA27A052ABA88B4001BAE85 /* DetailViewModel.swift in Sources */,
 				4EFDA3962AB2EF7200AC1B87 /* CustomButton.swift in Sources */,
 				4E7A8D902AB461EC0084C966 /* CompletionCell.swift in Sources */,
 				4ED8381A2AB9CB5E0040B457 /* CustomLabel.swift in Sources */,

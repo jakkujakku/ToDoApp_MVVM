@@ -15,7 +15,7 @@ class CategoryViewController: UIViewController {
     var todoVC = ToDoViewController()
     var viewModel = CategoryViewModel()
     var subscription = Set<AnyCancellable>()
-    
+
     deinit {
         print("### CategoryViewController deinitalized")
     }

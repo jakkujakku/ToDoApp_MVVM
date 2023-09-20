@@ -11,8 +11,14 @@ import Foundation
 
 class ToDoViewModel {
     private var todoList = CurrentValueSubject<[Task], Never>([])
+    private var selectedItem = CurrentValueSubject<Task?, Never>(nil)
+
     var todoPublisher: AnyPublisher<[Task], Never> {
         return todoList.eraseToAnyPublisher()
+    }
+
+    var selectedPublisher: AnyPublisher<Task?, Never> {
+        return selectedItem.eraseToAnyPublisher()
     }
 
     var todos: [Task] = [] {
@@ -29,6 +35,12 @@ class ToDoViewModel {
 
     var totalCount: Int {
         return todos.count
+    }
+
+    func didSelecteItem(at indexPath: Int) {
+        print("### \(#function)")
+        let item = todos[indexPath]
+        selectedItem.send(item)
     }
 
     func createItem(id: UUID, title: String, date: Date, modifyDate: Date?, isCompleted: Bool) {
