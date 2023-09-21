@@ -92,6 +92,6 @@ extension CompletionViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "완료된 체크리스트 : \(viewModel.totalCount)"
+        return "My Completed TodoList : \(viewModel.totalCount)"
     }
 }

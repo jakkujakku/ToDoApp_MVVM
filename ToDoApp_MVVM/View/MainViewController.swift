@@ -11,10 +11,13 @@ import UIKit
 class MainViewController: UIViewController {
     private let todoButton = CustomButton()
     private let completionButton = CustomButton()
+    private let profileButton = CustomButton()
+
     private let logoImageView = CustomImageView(frame: .zero)
 
     private let categoryVC = CategoryViewController()
     private let completedVC = CompletionViewController()
+    private let profileVC = ProfileViewController()
 
     deinit {
         print("### MainViewController deinitialized")
@@ -36,15 +39,18 @@ private extension MainViewController {
     }
 
     func setupButtons() {
-        todoButton.configure(title: "할 일 추가", color: .systemPink)
-        completionButton.configure(title: "완료한 일", color: .systemOrange)
+        todoButton.configure(title: "TO DO", color: .systemPink)
+        completionButton.configure(title: "COMPLE", color: .systemOrange)
+        profileButton.configure(title: "PROFILE", color: .systemGreen)
         todoButton.applyConerRadius()
         completionButton.applyConerRadius()
+        profileButton.applyConerRadius()
 
         todoButton.addTarget(self, action: #selector(tappedCategoryButton(_:)), for: .touchUpInside)
         completionButton.addTarget(self, action: #selector(tappedCompletionButton(_:)), for: .touchUpInside)
+        profileButton.addTarget(self, action: #selector(tappedProfileButton(_:)), for: .touchUpInside)
 
-        [todoButton, completionButton].forEach {
+        [todoButton, completionButton, profileButton].forEach {
             view.addSubview($0)
         }
 
@@ -57,7 +63,14 @@ private extension MainViewController {
 
         completionButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(todoButton.snp.bottom).offset(50)
+            make.top.equalTo(todoButton.snp.bottom).offset(60)
+            make.width.equalTo(150)
+            make.height.equalTo(60)
+        }
+
+        profileButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(completionButton.snp.bottom).offset(60)
             make.width.equalTo(150)
             make.height.equalTo(60)
         }
@@ -85,5 +98,10 @@ private extension MainViewController {
 
     @objc func tappedCompletionButton(_ sender: UIButton) {
         navigationController?.pushViewController(completedVC, animated: true)
+    }
+
+    @objc func tappedProfileButton(_ sender: UIButton) {
+        print("### \(#function)")
+        present(profileVC, animated: true)
     }
 }

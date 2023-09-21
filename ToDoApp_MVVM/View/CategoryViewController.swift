@@ -82,11 +82,11 @@ extension CategoryViewController {
         let alert = UIAlertController(title: "Please enter a category", message: "", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
 
-        let confirmAlert = UIAlertAction(title: "추가", style: .default, handler: { [weak self] _ in
+        let confirmAlert = UIAlertAction(title: "ADD", style: .default, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
-            self?.viewModel.createItem(id: UUID(), title: text)
+            self?.viewModel.createItem(id: UUID(), title: text.uppercased())
         })
 
         let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel)

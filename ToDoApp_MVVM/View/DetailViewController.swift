@@ -70,8 +70,9 @@ private extension DetailViewController {
     }
 
     func setupImageView() {
-        imageView.image = UIImage(systemName: "bell")
-        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "Icon")
+        imageView.contentMode = .scaleToFill
+        imageView.configurelayer(corner: 40)
 
         imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -134,7 +135,7 @@ private extension DetailViewController {
     func bind() {
         viewModel.detailPublisher
             .receive(on: RunLoop.main)
-            .receive(on: RunLoop.main)
+            .subscribe(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.titleLabel.text = self?.viewModel.title
                 self?.dateLabel.text = self?.viewModel.date
@@ -152,11 +153,11 @@ private extension DetailViewController {
         let alert = UIAlertController(title: "Please enter a new title", message: "", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
 
-        let confirmAlert = UIAlertAction(title: "추가", style: .default, handler: { [weak self] _ in
+        let confirmAlert = UIAlertAction(title: "ADD", style: .default, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
-            self?.viewModel.updateItem(task: self?.viewModel.item, newTitle: text, modifyDate: self?.viewModel.item?.modifyDate ?? Date())
+            self?.viewModel.updateItem(task: self?.viewModel.item, newTitle: text.uppercased(), modifyDate: self?.viewModel.item?.modifyDate ?? Date())
             self?.navigationController?.popViewController(animated: true)
         })
 
@@ -165,5 +166,19 @@ private extension DetailViewController {
         alert.addAction(confirmAlert)
         alert.addAction(cancelAlert)
         present(alert, animated: true)
+    }
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 }

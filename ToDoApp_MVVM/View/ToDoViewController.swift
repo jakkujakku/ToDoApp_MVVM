@@ -16,15 +16,14 @@ import UIKit
 class ToDoViewController: UIViewController {
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
 
-    let ex = CompletionViewController()
-
     let vc = DetailViewController()
+
     var viewModel = ToDoViewModel()
     var completionViewModel = CompletionViewModel()
     var subscription = Set<AnyCancellable>()
 
     deinit {
-        print("ToDoViewController deinitalized")
+        print("### ToDoViewController deinitalized")
     }
 }
 
@@ -96,11 +95,11 @@ private extension ToDoViewController {
         let alert = UIAlertController(title: "Please enter a Todo", message: "", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
 
-        let confirmAlert = UIAlertAction(title: "추가", style: .default, handler: { [weak self] _ in
+        let confirmAlert = UIAlertAction(title: "ADD", style: .default, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
-            self?.viewModel.createItem(id: UUID(), title: text, date: Date(), modifyDate: nil, isCompleted: false)
+            self?.viewModel.createItem(id: UUID(), title: text.uppercased(), date: Date(), modifyDate: nil, isCompleted: false)
         })
 
         let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel)
@@ -125,7 +124,7 @@ extension ToDoViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "\(navigationItem.title!) 체크리스트 : \(viewModel.totalCount)"
+        return "\(navigationItem.title!) todolist : \(viewModel.totalCount)"
     }
 }
 
