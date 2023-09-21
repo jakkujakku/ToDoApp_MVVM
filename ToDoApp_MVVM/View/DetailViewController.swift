@@ -146,11 +146,10 @@ private extension DetailViewController {
 private extension DetailViewController {
     @objc func tappedEditButton(_ sender: UIButton) {
         showAlert()
-        print("### \(#function)")
     }
 
     func showAlert() {
-        let alert = UIAlertController(title: "Please enter a category", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Please enter a new title", message: "", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
 
         let confirmAlert = UIAlertAction(title: "추가", style: .default, handler: { [weak self] _ in

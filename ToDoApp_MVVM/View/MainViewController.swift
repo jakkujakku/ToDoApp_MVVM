@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     private let completedVC = CompletionViewController()
 
     deinit {
-        print("### ")
+        print("### MainViewController deinitialized")
     }
 }
 
@@ -80,11 +80,9 @@ private extension MainViewController {
 private extension MainViewController {
     @objc func tappedCategoryButton(_ sender: UIButton) {
         navigationController?.pushViewController(categoryVC, animated: true)
-        print("### \(#function)")
     }
 
     @objc func tappedCompletionButton(_ sender: UIButton) {
         navigationController?.pushViewController(completedVC, animated: true)
-        print("### \(#function)")
     }
 }

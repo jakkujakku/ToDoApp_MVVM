@@ -20,9 +20,6 @@
 		4ED8380D2AB997970040B457 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8380C2AB997970040B457 /* CategoryViewController.swift */; };
 		4ED8380F2AB9981D0040B457 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED8380E2AB9981D0040B457 /* CategoryViewModel.swift */; };
 		4ED838112AB998380040B457 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED838102AB998370040B457 /* CategoryCell.swift */; };
-		4ED838142AB99B050040B457 /* CaCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED838132AB99B050040B457 /* CaCViewModel.swift */; };
-		4ED838162AB99B250040B457 /* TCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED838152AB99B250040B457 /* TCViewModel.swift */; };
-		4ED838182AB99B710040B457 /* CoCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED838172AB99B710040B457 /* CoCViewModel.swift */; };
 		4ED8381A2AB9CB5E0040B457 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED838192AB9CB5E0040B457 /* CustomLabel.swift */; };
 		4EFDA3762AB2EDD700AC1B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA3752AB2EDD700AC1B87 /* AppDelegate.swift */; };
 		4EFDA3782AB2EDD700AC1B87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDA3772AB2EDD700AC1B87 /* SceneDelegate.swift */; };
@@ -50,9 +47,6 @@
 		4ED8380C2AB997970040B457 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		4ED8380E2AB9981D0040B457 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		4ED838102AB998370040B457 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		4ED838132AB99B050040B457 /* CaCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaCViewModel.swift; sourceTree = "<group>"; };
-		4ED838152AB99B250040B457 /* TCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCViewModel.swift; sourceTree = "<group>"; };
-		4ED838172AB99B710040B457 /* CoCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoCViewModel.swift; sourceTree = "<group>"; };
 		4ED838192AB9CB5E0040B457 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4EFDA3722AB2EDD700AC1B87 /* ToDoApp_MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp_MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFDA3752AB2EDD700AC1B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,16 +86,6 @@
 				4E92CA852ABADFF500E063FB /* CustomStackView.swift */,
 			);
 			path = Subcomponents;
-			sourceTree = "<group>";
-		};
-		4ED838122AB99AA00040B457 /* Cell's ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4ED838132AB99B050040B457 /* CaCViewModel.swift */,
-				4ED838152AB99B250040B457 /* TCViewModel.swift */,
-				4ED838172AB99B710040B457 /* CoCViewModel.swift */,
-			);
-			path = "Cell's ViewModel";
 			sourceTree = "<group>";
 		};
 		4EFDA3692AB2EDD700AC1B87 = {
@@ -185,7 +169,6 @@
 				4ED838102AB998370040B457 /* CategoryCell.swift */,
 				4E7A8D8D2AB461E00084C966 /* ToDoCell.swift */,
 				4E7A8D8F2AB461EC0084C966 /* CompletionCell.swift */,
-				4ED838122AB99AA00040B457 /* Cell's ViewModel */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -324,9 +307,7 @@
 				4E7A8D8A2AB44EE80084C966 /* DataManager.xcdatamodeld in Sources */,
 				4ED838112AB998380040B457 /* CategoryCell.swift in Sources */,
 				4EA279FF2ABA7FD1001BAE85 /* DetailViewController.swift in Sources */,
-				4ED838142AB99B050040B457 /* CaCViewModel.swift in Sources */,
 				4ED8380D2AB997970040B457 /* CategoryViewController.swift in Sources */,
-				4ED838162AB99B250040B457 /* TCViewModel.swift in Sources */,
 				4EFDA39A2AB3017C00AC1B87 /* CustomImageView.swift in Sources */,
 				4E7A8D922AB46A2D0084C966 /* DataManager.swift in Sources */,
 				4EFDA37A2AB2EDD700AC1B87 /* MainViewController.swift in Sources */,
@@ -337,7 +318,6 @@
 				4EFDA3962AB2EF7200AC1B87 /* CustomButton.swift in Sources */,
 				4E7A8D902AB461EC0084C966 /* CompletionCell.swift in Sources */,
 				4ED8381A2AB9CB5E0040B457 /* CustomLabel.swift in Sources */,
-				4ED838182AB99B710040B457 /* CoCViewModel.swift in Sources */,
 				4ED8380B2AB997250040B457 /* CompletionViewModel.swift in Sources */,
 				4ED838092AB9971A0040B457 /* ToDoViewModel.swift in Sources */,
 				4E7A8D8E2AB461E00084C966 /* ToDoCell.swift in Sources */,

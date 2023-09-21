@@ -10,10 +10,17 @@ import CoreData
 import SnapKit
 import UIKit
 
+// Completed 처리 할 것
+// 프로필 페이지 할 것
+
 class ToDoViewController: UIViewController {
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
+
+    let ex = CompletionViewController()
+
     let vc = DetailViewController()
     var viewModel = ToDoViewModel()
+    var completionViewModel = CompletionViewModel()
     var subscription = Set<AnyCancellable>()
 
     deinit {
@@ -36,7 +43,6 @@ extension ToDoViewController {
 private extension ToDoViewController {
     func setupUI() {
         view.backgroundColor = .systemBackground
-
         navigationController?.navigationBar.prefersLargeTitles = false
         viewModel.readItem()
         setupTableView()
@@ -84,11 +90,10 @@ private extension ToDoViewController {
 private extension ToDoViewController {
     @objc func tappedAddButton(_ sender: UIBarButtonItem) {
         showAlert()
-        print("### \(#function)")
     }
 
     func showAlert() {
-        let alert = UIAlertController(title: "Please enter a category", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Please enter a Todo", message: "", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
 
         let confirmAlert = UIAlertAction(title: "추가", style: .default, handler: { [weak self] _ in
@@ -134,5 +139,18 @@ extension ToDoViewController: UITableViewDelegate {
         if editingStyle == .delete {
             viewModel.deleteItem(at: indexPath.row)
         }
+    }
+
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let confirm = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
+            success(true)
+            self?.completionViewModel.createItem(title: self?.viewModel.item?.title ?? "n/a")
+            self?.viewModel.deleteItem(at: indexPath.row)
+            print("### \(#function)")
+        }
+        confirm.backgroundColor = .systemBlue
+        confirm.image = UIImage(systemName: "checkmark.message")
+
+        return UISwipeActionsConfiguration(actions: [confirm])
     }
 }

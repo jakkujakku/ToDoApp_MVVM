@@ -15,6 +15,10 @@ final class CategoryCell: UITableViewCell {
 }
 
 extension CategoryCell {
+    override func awakeFromNib() {}
+}
+
+extension CategoryCell {
     func configure(item: Category) {
         titleLabel.text = item.title
     }

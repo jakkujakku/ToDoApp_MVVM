@@ -26,17 +26,20 @@ extension CategoryViewController {
         super.viewDidLoad()
         setup()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        bind()
+    }
 }
 
 extension CategoryViewController {
     func setup() {
         view.backgroundColor = .systemBackground
-        tableView.backgroundColor = .clear
         navigationItem.title = "Category"
         navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.backgroundColor = .clear
         viewModel.readItem()
         setupTableView()
-        bind()
         registerCell()
         setupBarButtonItem()
     }
@@ -73,7 +76,6 @@ extension CategoryViewController {
 extension CategoryViewController {
     @objc func tappedAddButton(_ sender: UIBarButtonItem) {
         showAlert()
-        print("### \(#function)")
     }
 
     func showAlert() {
@@ -109,7 +111,7 @@ extension CategoryViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "My Categories"
+        return "My Categories: \(viewModel.categories.count)"
     }
 }
 
@@ -129,7 +131,6 @@ extension CategoryViewController: UITableViewDelegate {
         }
     }
 
-    // 섹션 높이
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }

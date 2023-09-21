@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import UIKit
 
 class CategoryViewModel {
     private var categoriesList = CurrentValueSubject<[Category], Never>([])
@@ -17,6 +16,7 @@ class CategoryViewModel {
 
     var categories: [Category] = [] {
         didSet {
+            categories.sort(by: { $0.title! > $1.title! })
             categoriesList.send(categories)
         }
     }
@@ -46,7 +46,7 @@ class CategoryViewModel {
             categoriesList.send(categories)
         } catch {
             // error
-            print("패치 에러 : \(error)")
+            print("Fetch 에러 : \(error)")
         }
     }
 
