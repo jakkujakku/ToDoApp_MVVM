@@ -53,7 +53,6 @@ class CompletionViewModel {
         do {
             try DataManager.context.save()
             readItem()
-            completedList.send(completedTodos)
         } catch {
             print("### Delete Error: \(error)")
         }

@@ -69,6 +69,7 @@ private extension MainViewController {
         logoImageView.contentMode = .scaleToFill
 
         view.addSubview(logoImageView)
+
         logoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide).inset(100)

@@ -105,6 +105,7 @@ class ToDoViewModel {
         do {
             try DataManager.context.save()
             todoList.send(todos)
+            selectedItem.send(item)
         } catch {
             print("### Update Error: \(error)")
         }

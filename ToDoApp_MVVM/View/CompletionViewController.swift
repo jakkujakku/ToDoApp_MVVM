@@ -23,7 +23,6 @@ class CompletionViewController: UIViewController {
 extension CompletionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.readItem()
         setup()
     }
 
@@ -57,12 +56,13 @@ extension CompletionViewController {
 
 extension CompletionViewController {
     func bind() {
+        viewModel.readItem()
+
         viewModel.completedPublisher
             .receive(on: RunLoop.main)
             .subscribe(on: RunLoop.main)
             .sink { [weak self] _ in
                 print("### Combpletion 작동 중")
-                print("### \(self?.viewModel.completedTodos)")
                 self?.tableView.reloadData()
             }.store(in: &subscription)
     }
@@ -70,12 +70,13 @@ extension CompletionViewController {
 
 extension CompletionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.completedTodos.count
+        return viewModel.totalCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CompletionCell.identifier, for: indexPath) as? CompletionCell else { return UITableViewCell() }
-        cell.backgroundColor = .systemOrange
+        cell.setupUI()
+        cell.configure(item: viewModel.completedTodos[indexPath.row])
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -86,6 +87,11 @@ extension CompletionViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            viewModel.deleteItems(indexPath: indexPath.row)        }
+            viewModel.deleteItems(indexPath: indexPath.row)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "완료된 체크리스트 : \(viewModel.totalCount)"
     }
 }

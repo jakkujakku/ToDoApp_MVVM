@@ -123,6 +123,10 @@ extension ToDoViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         return cell
     }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "\(navigationItem.title!) 체크리스트 : \(viewModel.totalCount)"
+    }
 }
 
 extension ToDoViewController: UITableViewDelegate {
@@ -144,7 +148,7 @@ extension ToDoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let confirm = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
             success(true)
-            self?.completionViewModel.createItem(title: self?.viewModel.item?.title ?? "n/a")
+            self?.completionViewModel.createItem(title: self?.viewModel.todos[indexPath.row].title ?? "n/a")
             self?.viewModel.deleteItem(at: indexPath.row)
             print("### \(#function)")
         }
