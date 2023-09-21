@@ -57,4 +57,18 @@ class CompletionViewModel {
             print("### Delete Error: \(error)")
         }
     }
+    
+    func deleteAllItem() {
+        for completion in completedTodos {
+            DataManager.context.delete(completion)
+        }
+
+        do {
+            try DataManager.context.save()
+            readItem()
+            completedList.send(completedTodos)
+        } catch {
+            print("### Delete Error: \(error)")
+        }
+    }
 }

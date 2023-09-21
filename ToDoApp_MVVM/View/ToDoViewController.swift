@@ -15,6 +15,7 @@ import UIKit
 
 class ToDoViewController: UIViewController {
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
+    var trashButton = CustomButton(frame: .zero)
 
     let vc = DetailViewController()
 
@@ -47,6 +48,7 @@ private extension ToDoViewController {
         setupTableView()
         registerCell()
         setupBarButtonItem()
+        setupTrashButton()
     }
 
     func setupTableView() {
@@ -63,6 +65,22 @@ private extension ToDoViewController {
     func setupBarButtonItem() {
         let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.square"), style: .plain, target: self, action: #selector(tappedAddButton(_:)))
         navigationItem.rightBarButtonItem = barButtonItem
+    }
+
+    func setupTrashButton() {
+        trashButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        trashButton.tintColor = .white
+        trashButton.layer.cornerRadius = 40
+        trashButton.layer.masksToBounds = true
+        trashButton.backgroundColor = .systemPink
+
+        trashButton.addTarget(self, action: #selector(tappedTrashButton(_:)), for: .touchUpInside)
+
+        view.addSubview(trashButton)
+        trashButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.height.width.equalTo(80)
+        }
     }
 
     func registerCell() {
@@ -89,6 +107,24 @@ private extension ToDoViewController {
 private extension ToDoViewController {
     @objc func tappedAddButton(_ sender: UIBarButtonItem) {
         showAlert()
+    }
+
+    @objc func tappedTrashButton(_ sender: UIButton) {
+        deleteAlert()
+        print("### \(#function)")
+    }
+    
+    func deleteAlert() {
+        let alert = UIAlertController(title: "DO YOU WANT TO DELETE THE DATA?", message: "", preferredStyle: .alert)
+        let confirmAlert = UIAlertAction(title: "DELETE", style: .default, handler: { [weak self] _ in
+            self?.viewModel.deleteItems()
+        })
+
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alert.addAction(confirmAlert)
+        alert.addAction(cancelAlert)
+        present(alert, animated: true)
     }
 
     func showAlert() {

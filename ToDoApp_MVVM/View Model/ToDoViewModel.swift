@@ -123,4 +123,18 @@ class ToDoViewModel {
             print("### Delete Error: \(error)")
         }
     }
+
+    func deleteItems() {
+        for task in todos {
+            DataManager.context.delete(task)
+        }
+
+        do {
+            try DataManager.context.save()
+            readItem()
+            todoList.send(todos)
+        } catch {
+            print("### Delete Error: \(error)")
+        }
+    }
 }

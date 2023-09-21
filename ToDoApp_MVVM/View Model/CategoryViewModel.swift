@@ -73,4 +73,18 @@ class CategoryViewModel {
             print("### Delete Error: \(error)")
         }
     }
+
+    func deleteItems() {
+        for category in categories {
+            DataManager.context.delete(category)
+        }
+
+        do {
+            try DataManager.context.save()
+            readItem()
+            categoriesList.send(categories)
+        } catch {
+            print("### Delete Error: \(error)")
+        }
+    }
 }

@@ -13,6 +13,7 @@ import UIKit
 class CompletionViewController: UIViewController {
     var viewModel = CompletionViewModel()
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
+    var trashButton = CustomButton(frame: .zero)
     var subscription = Set<AnyCancellable>()
 
     deinit {
@@ -37,6 +38,7 @@ extension CompletionViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         setupTableView()
         registerCell()
+        setupTrashButton()
     }
 
     func setupTableView() {
@@ -46,6 +48,22 @@ extension CompletionViewController {
         tableView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
+        }
+    }
+
+    func setupTrashButton() {
+        trashButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        trashButton.tintColor = .white
+        trashButton.layer.cornerRadius = 40
+        trashButton.layer.masksToBounds = true
+        trashButton.backgroundColor = .systemPink
+
+        trashButton.addTarget(self, action: #selector(tappedTrashButton(_:)), for: .touchUpInside)
+
+        view.addSubview(trashButton)
+        trashButton.snp.makeConstraints { make in
+            make.bottom.trailing.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.height.width.equalTo(80)
         }
     }
 
@@ -66,6 +84,24 @@ extension CompletionViewController {
                 self?.tableView.reloadData()
             }.store(in: &subscription)
     }
+
+    func deleteAlert() {
+        let alert = UIAlertController(title: "DO YOU WANT TO DELETE THE DATA?", message: "", preferredStyle: .alert)
+        let confirmAlert = UIAlertAction(title: "DELETE", style: .default, handler: { [weak self] _ in
+            self?.viewModel.deleteAllItem()
+        })
+
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel)
+
+        alert.addAction(confirmAlert)
+        alert.addAction(cancelAlert)
+        present(alert, animated: true)
+    }
+
+    @objc func tappedTrashButton(_ sender: UIButton) {
+        deleteAlert()
+        print("### \(#function)")
+    }
 }
 
 extension CompletionViewController: UITableViewDataSource {
@@ -78,6 +114,7 @@ extension CompletionViewController: UITableViewDataSource {
         cell.setupUI()
         cell.configure(item: viewModel.completedTodos[indexPath.row])
         cell.accessoryType = .disclosureIndicator
+
         return cell
     }
 

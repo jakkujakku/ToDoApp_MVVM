@@ -8,9 +8,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
     var profileIconimageView = CustomImageView(frame: .zero)
-    
+
     deinit {
         print("### ProfileViewController deinitialized")
     }
