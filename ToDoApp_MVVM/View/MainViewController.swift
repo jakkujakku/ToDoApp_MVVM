@@ -102,6 +102,7 @@ private extension MainViewController {
 
     @objc func tappedProfileButton(_ sender: UIButton) {
         print("### \(#function)")
+        profileVC.modalPresentationStyle = .overFullScreen
         present(profileVC, animated: true)
     }
 }
