@@ -10,9 +10,6 @@ import CoreData
 import SnapKit
 import UIKit
 
-// Completed 처리 할 것
-// 프로필 페이지 할 것
-
 class ToDoViewController: UIViewController {
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
     var trashButton = CustomButton(frame: .zero)
@@ -113,7 +110,7 @@ private extension ToDoViewController {
         deleteAlert()
         print("### \(#function)")
     }
-    
+
     func deleteAlert() {
         let alert = UIAlertController(title: "DO YOU WANT TO DELETE ALL DATA?", message: "", preferredStyle: .alert)
         let confirmAlert = UIAlertAction(title: "DELETE", style: .default, handler: { [weak self] _ in
