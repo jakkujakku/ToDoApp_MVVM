@@ -63,12 +63,13 @@ Pull Requests는 Commit Message와 동일하게 써서 올립니다.
 <br><br>
 
 ## 🧐 앱 실행 이미지
-<img src="Simulator Screenshot - iPhone 14 Pro - 2023-09-11 at 01.51.40.png" width="30%" height="30%">
-<img src="Simulator Screenshot - iPhone 14 Pro - 2023-09-11 at 01.48.45.png" width="30%" height="30%">
-<img src="Simulator Screenshot - iPhone 14 Pro - 2023-09-11 at 01.50.03.png" width="30%" height="30%">
-<img src="Simulator Screenshot - iPhone 14 Pro - 2023-09-11 at 01.50.14.png" width="30%" height="30%">
-<img src="Simulator Screenshot - iPhone 14 Pro - 2023-09-11 at 01.50.23.png" width="30%" height="30%">
-
+<img src="https://velog.velcdn.com/images/jakkujakku98/post/7efa2d8d-2b68-455d-9e60-21ee180d5187/image.png" width="30%" height="30%">
+<img src="https://velog.velcdn.com/images/jakkujakku98/post/54ec5a4c-fed5-4a28-8be2-740b9c646865/image.png" width="30%" height="30%">
+<img src="https://velog.velcdn.com/images/jakkujakku98/post/addeac5d-2dc2-4253-99b7-980eff18ccd6/image.png" width="30%" height="30%">
+<img src="https://velog.velcdn.com/images/jakkujakku98/post/69e6f122-4aec-4ba8-8aa6-9eb94d41f45f/image.png" width="30%" height="30%">
+<img src="https://velog.velcdn.com/images/jakkujakku98/post/607a5c8b-1c04-41ee-ac18-808dd2618902/image.png" width="30%" height="30%">
+<img src="https://velog.velcdn.com/images/jakkujakku98/post/74c1e221-e0a2-4dae-86b4-dfeca76a63f4/image.png" width="30%" height="30%">
+<img src="https://velog.velcdn.com/images/jakkujakku98/post/cc92950b-71a8-4056-b9a1-5216dced92ad/image.png" width="30%" height="30%">
 <br><br>
 
 ## 앱 구조 - MVVM
