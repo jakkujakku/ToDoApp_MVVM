@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
 
     private let categoryVC = CategoryViewController()
     private let completedVC = CompletionViewController()
-    private let profileVC = ProfileViewController()
+    private let profileVC = TabBarController()
 
     deinit {
         print("### MainViewController deinitialized")

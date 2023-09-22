@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E6952A22ABD2AC50042E598 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6952A12ABD2AC50042E598 /* ProfileCell.swift */; };
 		4E6952A42ABD30E20042E598 /* MockupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6952A32ABD30E20042E598 /* MockupData.swift */; };
+		4E6952A62ABD36F80042E598 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6952A52ABD36F80042E598 /* TabbarController.swift */; };
 		4E7A8D8A2AB44EE80084C966 /* DataManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A8D882AB44EE80084C966 /* DataManager.xcdatamodeld */; };
 		4E7A8D8C2AB454520084C966 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A8D8B2AB454520084C966 /* CustomTableView.swift */; };
 		4E7A8D8E2AB461E00084C966 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A8D8D2AB461E00084C966 /* ToDoCell.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		4E6952A12ABD2AC50042E598 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		4E6952A32ABD30E20042E598 /* MockupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupData.swift; sourceTree = "<group>"; };
+		4E6952A52ABD36F80042E598 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		4E7A8D892AB44EE80084C966 /* DataManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataManager.xcdatamodel; sourceTree = "<group>"; };
 		4E7A8D8B2AB454520084C966 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		4E7A8D8D2AB461E00084C966 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				4EA279FE2ABA7FD1001BAE85 /* DetailViewController.swift */,
 				4EFDA3932AB2EF5A00AC1B87 /* CompletionViewController.swift */,
 				4E8B8F312ABCA3A900B06054 /* ProfileViewController.swift */,
+				4E6952A52ABD36F80042E598 /* TabbarController.swift */,
 				4ED838052AB996200040B457 /* Subcomponents */,
 				4EFDA3982AB2F34100AC1B87 /* Cells */,
 			);
@@ -316,6 +319,7 @@
 				4E7A8D8A2AB44EE80084C966 /* DataManager.xcdatamodeld in Sources */,
 				4ED838112AB998380040B457 /* CategoryCell.swift in Sources */,
 				4EA279FF2ABA7FD1001BAE85 /* DetailViewController.swift in Sources */,
+				4E6952A62ABD36F80042E598 /* TabbarController.swift in Sources */,
 				4E6952A22ABD2AC50042E598 /* ProfileCell.swift in Sources */,
 				4E6952A42ABD30E20042E598 /* MockupData.swift in Sources */,
 				4ED8380D2AB997970040B457 /* CategoryViewController.swift in Sources */,
