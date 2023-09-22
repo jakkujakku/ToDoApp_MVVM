@@ -132,7 +132,7 @@ Pull Requests는 Commit Message와 동일하게 써서 올립니다.
     }
 ```
 - MVVM 패턴 코드 
-- ToDoViewController 부분의 데이터 저장하는 코드
+- ToDoViewModel 부분의 데이터 저장하는 코드
 ```swift
 class ToDoViewModel {
     private var todoList = CurrentValueSubject<[Task], Never>([])
