@@ -103,7 +103,7 @@ extension CategoryViewController {
     }
 
     func deleteAlert() {
-        let alert = UIAlertController(title: "DO YOU WANT TO DELETE THE DATA?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "DO YOU WANT TO DELETE ALL DATA?", message: "", preferredStyle: .alert)
         let confirmAlert = UIAlertAction(title: "DELETE", style: .default, handler: { [weak self] _ in
             self?.viewModel.deleteItems()
         })

@@ -56,7 +56,7 @@ extension CompletionViewController {
         trashButton.tintColor = .white
         trashButton.layer.cornerRadius = 40
         trashButton.layer.masksToBounds = true
-        trashButton.backgroundColor = .systemPink
+        trashButton.backgroundColor = .systemOrange
 
         trashButton.addTarget(self, action: #selector(tappedTrashButton(_:)), for: .touchUpInside)
 
@@ -86,7 +86,7 @@ extension CompletionViewController {
     }
 
     func deleteAlert() {
-        let alert = UIAlertController(title: "DO YOU WANT TO DELETE THE DATA?", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "DO YOU WANT TO DELETE ALL DATA?", message: "", preferredStyle: .alert)
         let confirmAlert = UIAlertAction(title: "DELETE", style: .default, handler: { [weak self] _ in
             self?.viewModel.deleteAllItem()
         })
