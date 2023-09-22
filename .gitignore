@@ -11,6 +11,8 @@
 .AppleDouble
 .LSOverride
 
+*.png
+
 ## User settings
 xcuserdata/
 
